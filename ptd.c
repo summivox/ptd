@@ -9,9 +9,10 @@ static void swap_u8(u8* a, u8* b){
 
 static void transform(u8* buf, size_t len){
     u8* end=buf+len;
+    u8 mask=0x03;
     for(u8* p=buf;p<end;){
-        *p++^=(u8)0x03;
-        *p++^=(u8)0x18;
+        *p++^=mask;
+        mask^=0x1B;
     }
 
     u8* end2=end-16;
